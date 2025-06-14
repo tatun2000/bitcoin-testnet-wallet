@@ -80,6 +80,20 @@ Have the following transaction:
 
 ## Send bitcoins to faucet
 
+### What shall we need to do to create transaction?
+
+1. Get the transaction with our funds (UTXO funds)
+2. Get private child key with the the same path (this path was used to create address in previous transaction)
+3. Create compressed WIF from private key
+4. Create compressed public key from compressed WIF (only 33 bytes)
+5. Get hash from this public key
+6. Create transaction and add input from output previous tx
+7. Calculate fee (for fee pays sender)
+8. Add output(s) - create from faucet addr
+9. Create witness section for transaction (from public key hash)
+10. Send tx data into testnet
+11. Receive the tx ID
+
 https://blockstream.info/testnet/api/tx response with txID : 0de504af7fca326101e9aa959a2e3a0a0e84ab281ccbc019b15a580342b43f78
 
 ```json
@@ -128,3 +142,15 @@ https://blockstream.info/testnet/api/tx response with txID : 0de504af7fca326101e
     }
 }
 ```
+
+
+# Useful commands
+
+GET all transactions for address
+curl https://blockstream.info/testnet/api/address/{address}/txs 
+
+GET tx by id
+curl https://blockstream.info/testnet/api/tx/{txid}
+
+GET utxo for address
+curl https://blockstream.info/testnet/api/address/{address}/utxo

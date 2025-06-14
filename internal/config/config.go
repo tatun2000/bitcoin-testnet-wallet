@@ -13,11 +13,11 @@ type Config struct {
 	UniqueSeed       bool   `mapstructure:"uniqueSeed"`
 }
 
-func NewConfig(ctx context.Context, cfgPath string) (cfg *Config, err error) {
+func NewConfig(ctx context.Context) (cfg *Config, err error) {
 	v := viper.New()
 	v.SetConfigName("config")
 	v.SetConfigType("yaml")
-	v.AddConfigPath(cfgPath)
+	v.AddConfigPath(".")
 	if err = v.ReadInConfig(); err != nil {
 		return nil, wrap.Wrap(err)
 	}
