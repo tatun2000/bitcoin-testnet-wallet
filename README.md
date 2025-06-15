@@ -1,7 +1,7 @@
 ### bitcoin-testnet-wallet is a project created by reason to get practice on generating keys, creating addresses and transactions. 
 *There is only education content but structure and deployment practice closed to real project (for several exclusions)*
 
-The main idea is create own bitcoin wallet to receiving from or sending funds to the bitcoin testnet faucet
+The main idea is create own bitcoin wallet to receiving/sending funds from/to the bitcoin testnet faucet
 
 ### Functional scheme
 ![alt text](image-4.png)
