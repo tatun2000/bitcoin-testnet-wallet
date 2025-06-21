@@ -1,4 +1,4 @@
-package main
+package infrastructure
 
 import (
 	"context"
@@ -7,11 +7,11 @@ import (
 	"github.com/tatun2000/bitcoin-testnet-wallet/internal/config"
 )
 
-type (
-	Kernel struct {
-		cfg *config.Config
-	}
-)
+var App *Kernel
+
+type Kernel struct {
+	cfg *config.Config
+}
 
 func NewKernel(ctx context.Context) *Kernel {
 	cfg, err := config.NewConfig(ctx)

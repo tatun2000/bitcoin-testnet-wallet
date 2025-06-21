@@ -1,10 +1,9 @@
-package main
+package infrastructure
 
 import (
 	"sync"
 
 	"github.com/tatun2000/bitcoin-testnet-wallet/internal/domains/address"
-	"github.com/tatun2000/bitcoin-testnet-wallet/internal/domains/listener"
 	"github.com/tatun2000/bitcoin-testnet-wallet/internal/domains/transaction"
 	"github.com/tatun2000/bitcoin-testnet-wallet/internal/domains/wallet"
 )
@@ -53,19 +52,4 @@ func (k *Kernel) InjectTransactionService() *transaction.Service {
 	})
 
 	return transactionService
-}
-
-var (
-	listenerHandler *listener.Handler
-	listenerOnce    sync.Once
-)
-
-func (k *Kernel) InjectListenerHandler() *listener.Handler {
-	listenerOnce.Do(func() {
-		listenerHandler = listener.NewHandler(
-			k.InjectWalletService(),
-		)
-	})
-
-	return listenerHandler
 }

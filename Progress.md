@@ -154,7 +154,7 @@ curl https://blockstream.info/testnet/api/address/{address}/utxo
 
 #### Nearest:
 1. Implement method to create transaction with several INPUTs;
-2. Create useful user shell for listening commands;
+2. Create useful user shell for listening commands; +
 3. Write unit tests on transaction service -> network calls move to another service.
 
 #### Later:
