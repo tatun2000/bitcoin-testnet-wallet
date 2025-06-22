@@ -51,7 +51,7 @@ func (s *Service) CreateNewTransaction(recepientAddress string, amount int64, tx
 		var respTx entities.Tx
 		resp, err := s.client.R().
 			SetResult(&respTx).
-			Get(fmt.Sprintf("https://blockstream.info/testnet/api/tx/%s", txID))
+			Get(fmt.Sprintf("tx/%s", txID))
 		if err != nil {
 			return "", wrap.Wrap(err)
 		}
@@ -164,7 +164,7 @@ func (s *Service) CreateNewTransaction(recepientAddress string, amount int64, tx
 	resp, err := s.client.R().
 		SetHeader("Content-Type", "text/plain").
 		SetBody(hexTx).
-		Post("https://blockstream.info/testnet/api/tx")
+		Post("tx")
 	if err != nil {
 		return "", wrap.Wrap(err)
 	}
