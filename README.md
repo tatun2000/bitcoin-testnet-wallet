@@ -7,7 +7,7 @@ The main idea is create own bitcoin wallet to receiving/sending funds from/to th
 ![alt text](images/image-4.png)
 
 # Usage:
-1. ## It's necessary to change secretPassphrase in config/config.yaml with your version
+1. ## It's necessary to change secretPassphrase in config/config.yaml with your phrase
 
 2. ## Start wallet by following commands:
 ```bash
