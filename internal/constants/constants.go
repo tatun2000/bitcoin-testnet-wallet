@@ -12,3 +12,7 @@ const (
 const (
 	EOFCommand = "exit"
 )
+
+const (
+	DefaultFeeRate = 2 // sat/vbyte
+)

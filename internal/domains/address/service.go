@@ -1,7 +1,9 @@
 package address
 
 import (
+	"bufio"
 	"log"
+	"os"
 
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcutil"
@@ -46,9 +48,15 @@ func NewService(secretPhrase string, uniqueSeed bool) *Service {
 		log.Fatal(err)
 	}
 
-	return &Service{
+	s := &Service{
 		masterPrivateKey: masterKey,
 	}
+
+	if err := s.SaveAddress(); err != nil {
+		log.Fatal(err)
+	}
+
+	return s
 }
 
 // Path: m/84'/1'/0'/0/0
@@ -101,4 +109,46 @@ func (s *Service) GenerateBitcoinBIP84AddressForTestNet() (result string, err er
 	}
 
 	return address.EncodeAddress(), nil
+}
+
+func (s *Service) SaveAddress() (err error) {
+	if _, err := os.Stat(constants.WalletAddressPath); err != nil {
+		if os.IsNotExist(err) {
+			file, err := os.Create(constants.WalletAddressPath)
+			if err != nil {
+				return wrap.Wrap(err)
+			}
+			defer file.Close()
+
+			address, err := s.GenerateBitcoinBIP84AddressForTestNet()
+			if err != nil {
+				return wrap.Wrap(err)
+			}
+
+			if _, err = file.WriteString(address); err != nil {
+				return wrap.Wrap(err)
+			}
+		} else {
+			return wrap.Wrap(err)
+		}
+	}
+
+	return nil
+}
+
+func (s *Service) RetrieveAddress() (result string, err error) {
+	file, err := os.Open(constants.WalletAddressPath)
+	if err != nil {
+		return result, wrap.Wrap(err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	if scanner.Scan() {
+		result = scanner.Text()
+	} else if err := scanner.Err(); err != nil {
+		return result, wrap.Wrap(err)
+	}
+
+	return result, nil
 }

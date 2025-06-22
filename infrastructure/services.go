@@ -17,6 +17,7 @@ func (k *Kernel) InjectWalletService() *wallet.Service {
 	walletServiceOnce.Do(func() {
 		walletService = wallet.NewService(
 			k.InjectAddressService(),
+			k.InjectTransactionService(),
 		)
 	})
 

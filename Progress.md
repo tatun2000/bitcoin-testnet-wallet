@@ -2,8 +2,8 @@
 ### 1 Generate BIP39 seed from passphrase
 
 *mnemonic(code words) can be constant. It will lead to the same seed
-![alt text](image.png)
-![alt text](image-1.png)
+![alt text](images/image.png)
+![alt text](images/image-1.png)
 
 
 ### 2 Create master private and public keys 
@@ -70,7 +70,7 @@ Have the following transaction:
 }
 ```
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
 
 ## Send bitcoins to faucet
@@ -153,9 +153,18 @@ curl https://blockstream.info/testnet/api/address/{address}/utxo
 ## Architecture TODO:
 
 #### Nearest:
-1. Implement method to create transaction with several INPUTs;
-2. Create useful user shell for listening commands; +
-3. Write unit tests on transaction service -> network calls move to another service.
+1. Write unit tests on transaction service -> network calls move to another service;
+2. Add logger + linter;
 
 #### Later:
 1. Use store (for example https://github.com/hypermodeinc/badger) to save n, where n using to create wallet bitcoin addresses
+
+## Functional TODO
+1. For every transaction use different wallet address
+    - m/84'/1'/0'/0/n (external address for receive funds)
+    - m/84'/1'/0'/1/n (internal address for changes)
+2. Backup functionality to wallet (need additional research). Save only:
+    - recovery codes ~ mnemonic;
+    - passphrase;
+    - n.
+3. Support also mainnet (need additional research)

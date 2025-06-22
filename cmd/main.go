@@ -19,18 +19,12 @@ import (
 )
 
 var rootCommand = &cobra.Command{
-	Use:   "wallet",
+	Use:   "",
 	Short: "testnet wallet shell.",
 	Long:  "testnet wallet shell.",
 	CompletionOptions: cobra.CompletionOptions{
 		DisableDefaultCmd: true,
 	},
-}
-
-func init() {
-	// if err := setRootUID(); err != nil {
-	// 	log.Fatal(err)
-	// }
 }
 
 func setRootUID() (err error) {
@@ -63,6 +57,7 @@ var completer = readline.NewPrefixCompleter(
 	readline.PcItem("wallet",
 		readline.PcItem("address"),
 		readline.PcItem("balance"),
+		readline.PcItem("send"),
 	),
 	readline.PcItem("help"),
 	readline.PcItem("exit"),
