@@ -9,7 +9,7 @@ The main idea is create own bitcoin wallet to receiving/sending funds from/to th
 # Usage:
 1. ## It's necessary to change secretPassphrase in config/config.yaml with your version
 
-2. ## start wallet by following commands:
+2. ## Start wallet by following commands:
 ```bash
 make build
 make run
