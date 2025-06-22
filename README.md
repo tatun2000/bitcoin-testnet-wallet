@@ -6,8 +6,13 @@ The main idea is create own bitcoin wallet to receiving/sending funds from/to th
 ### Functional scheme
 ![alt text](images/image-4.png)
 
-# Usage:
-1. ## It's necessary to change secretPassphrase in config/config.yaml with your phrase
+# Usage
+1. ## Create file by path config/config.yaml and put the following:
+```yaml
+secretPassphrase: "The Spanish guy who lost his car - Carlos"
+uniqueSeed: false
+```
+### *It's necessary to change secretPassphrase in config/config.yaml with your phrase*
 
 2. ## Start wallet by following commands:
 ```bash
