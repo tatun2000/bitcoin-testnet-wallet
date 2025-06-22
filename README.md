@@ -15,15 +15,15 @@ make build
 make run
 ```
 
-3. ## Chose one of bitcoin testnet faucet:
-https://bitcoinfaucet.uo1.net (more reliable and clearly)
-https://cryptopump.info/send.php
-
-4. ## In wallet input command:
+3. ## Input command in running wallet:
 ```bash
 wallsh> wallet address
 ```
 *It's your bitcoin address*
+
+4. ## Chose one of bitcoin testnet faucet:
+- https://bitcoinfaucet.uo1.net (more reliable and clearly)
+- https://cryptopump.info/send.php
 
 5. ## Make sure that your available balance equal zero:
 ```bash
